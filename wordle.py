@@ -10,14 +10,21 @@ guess_counter = 6
 while game_counter <= 5:
     
     user_input = input("Please enter your guess: ")
-    if len(user_input)<= 4:
+    if user_input == secret_word:
+        print("Congrats, you got it!")
+        break
+    elif len(user_input)<= 4:
         print("The word has not enough letters.")
     elif len(user_input) >=6:
         print("The word has to many letters.")
     elif len(user_input) == 5:
         print("nice try.")
         guess_counter -= 1
-        print(f"You have {guess_counter} tries left")
+        if guess_counter == 0:
+            print("Out of tries")
+            print(f"The word would have been {secret_word}")
+        else:
+            print(f"You have {guess_counter} tries left")
         game_counter += 1
     else:
-        print("This is not a valid input")
+        print("Better luck next time.")
