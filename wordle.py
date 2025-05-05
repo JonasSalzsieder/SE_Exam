@@ -9,6 +9,8 @@ print (secret_word_list)
 game_counter = 0
 guess_counter = 6
 
+correct_positions = []
+
 while game_counter <= 5:
     
     user_input = input("Please enter your guess: ")
@@ -26,9 +28,19 @@ while game_counter <= 5:
             print("Out of tries")
             print(f"The word would have been {secret_word}")
         else:
-            for i in secret_word:
-                if i in user_input.lower() or user_input.upper():
-                    print(i + " is in the word")
+               
+            for letter in secret_word:
+                if letter in user_input:
+                 print(letter + " is in the word")
+
+            for position in range(len(secret_word)):
+                if user_input[position] == secret_word[position]:
+                    correct_positions.append(position)
+
+                for index, position in enumerate(correct_positions):
+                    human_index = index +1
+                    print(human_index) 
+
             print(f"You have {guess_counter} tries left")
         game_counter += 1
     else:

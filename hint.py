@@ -1,13 +1,23 @@
 secret_word = "hello"
-secret_word_list = list(secret_word)
+
 
 
 user_input = input("Please enter your guess: ")
-user_input_list = list(user_input)
+
+correct_positions = []
 
 
 
-for i in secret_word:
-    if i in user_input.lower() or user_input.upper():
-        print(i + " is correct")
 
+for letter in secret_word:
+    if letter in user_input:
+        print(letter + " is in the word")
+
+for position in range(len(secret_word)):
+    if user_input[position] == secret_word[position]:
+        correct_positions.append(position)
+        print(correct_positions)
+
+for index, position in enumerate(correct_positions):
+    human_index = index +1
+    print (human_index)
