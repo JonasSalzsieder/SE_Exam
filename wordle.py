@@ -2,18 +2,17 @@ print("Welcome to your daily 'Wordle'")
 print("Your task is to guess a secret 5 letter word within 6 tries. Good Luck, you will need it!")
 print("-----------------")
 
-secret_word = "Hello"
+secret_word = "hello".upper()
 secret_word_list = list(secret_word)
 print (secret_word_list)
 
 game_counter = 0
 guess_counter = 6
 
-correct_positions = []
 
 while game_counter <= 5:
     
-    user_input = input("Please enter your guess: ")
+    user_input = input("Please enter your guess: ").upper()
     if user_input == secret_word:
         print("Congrats, you got it!")
         break
@@ -27,6 +26,7 @@ while game_counter <= 5:
         if guess_counter == 0:
             print("Out of tries")
             print(f"The word would have been {secret_word}")
+        
         else:
                
             for letter in secret_word:
@@ -34,13 +34,13 @@ while game_counter <= 5:
                  print(letter + " is in the word")
 
             for position in range(len(secret_word)):
+                correct_positions = []
+                correct_pos = correct_positions
                 if user_input[position] == secret_word[position]:
-                    correct_positions.append(position)
-
-                for index, position in enumerate(correct_positions):
-                    human_index = index +1
-                    print(human_index) 
-
+                    correct_positions.append(position+1)
+                    print(f"You have a correct letter at position: {correct_pos}")
+            
+                   
             print(f"You have {guess_counter} tries left")
         game_counter += 1
     else:
