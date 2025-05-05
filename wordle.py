@@ -3,6 +3,8 @@ print("Your task is to guess a secret 5 letter word within 6 tries. Good Luck, y
 print("-----------------")
 
 secret_word = "Hello"
+secret_word_list = list(secret_word)
+print (secret_word_list)
 
 game_counter = 0
 guess_counter = 6
@@ -24,7 +26,13 @@ while game_counter <= 5:
             print("Out of tries")
             print(f"The word would have been {secret_word}")
         else:
+            for i in secret_word:
+                if i in user_input.lower() or user_input.upper():
+                    print(i + " is in the word")
             print(f"You have {guess_counter} tries left")
         game_counter += 1
     else:
         print("Better luck next time.")
+
+
+
